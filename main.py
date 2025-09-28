@@ -1,6 +1,3 @@
-book_text = None
-book_words = []
-
 def get_book_text(file):
     with open("books/frankenstein.txt") as f:
         book_text = f.read()
@@ -11,12 +8,11 @@ def get_book_text(file):
 # it currently splits the text down by character
 # it SHOULD split based on WORD
 def word_count(book_text):
+    splitted = book_text.split()
+#    print(splitted)
     num_words = 0
-    splitted_text = book_text.split(' ')
-    for word in book_text:
-        book_words.append(word)
+    for word in splitted:
         num_words += 1
-    print(book_words)
 
     return f"Found {num_words} total words"
 
