@@ -7,7 +7,6 @@ def word_count(book_text):
     return f"Found {num_words} total words"
 
 def char_count(book_text):
-    print("### CHAR_COUNT DEBUG ###")
     char_obj = {}
 
     # add each unique value (lowercased) to the object
@@ -17,9 +16,21 @@ def char_count(book_text):
             char_obj[c] = 0
         char_obj[c] += 1
 
-    print("CHECKS")
-    print(f"t: {char_obj['t']}")
-    print(f"p: {char_obj['p']}")
-    print(f"c: {char_obj['c']}")
-    print("#########################")
     return char_obj
+
+def sort_on(items):
+    return items["num"]
+
+def sorted(dict_of_chars):
+# take in the dict(obj) of the characters and their counts
+# return the sorted list of dicts 
+    list_of_dicts = [] # <character>:<count>
+
+    # iterate through char_obj and make a dict for each pair
+    for key, value in dict_of_chars.items(): # get key/val pairs and not just keys
+        list_of_dicts.append({key:value}) # append single dict for each iteration
+
+    # use a helper function to provide a metric for the sort method to sort by number
+    nums = sort_on(dict_of_chars)
+    print(nums)
+
