@@ -1,6 +1,6 @@
 from stats import word_count
 from stats import char_count
-from stats import sorted
+from stats import sort_char_counts
 
 def get_book_text(file):
     with open("books/frankenstein.txt") as f:
@@ -15,5 +15,6 @@ def main():
     print("----------- Word Count ----------")
     print(word_count(get_book_text("./books/frankenstein.txt")))
     print("--------- Character Count -------")
-    print(sorted(char_count(get_book_text("./books/frankenstein.txt"))))
+    print(sort_char_counts(char_count(get_book_text("./books/frankenstein.txt"))))
+
 main()

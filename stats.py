@@ -18,19 +18,28 @@ def char_count(book_text):
 
     return char_obj
 
-def sort_on(items):
-    return items["num"]
+# helper fn, use inside `sort_char_counts`
+# `item` will be ?
+def sort_on(item):
+    return item["num"]
 
-def sorted(dict_of_chars):
+def sort_char_counts(dict_of_chars):
 # take in the dict(obj) of the characters and their counts
 # return the sorted list of dicts 
     list_of_dicts = [] # <character>:<count>
 
-    # iterate through char_obj and make a dict for each pair
-    for key, value in dict_of_chars.items(): # get key/val pairs and not just keys
-        list_of_dicts.append({key:value}) # append single dict for each iteration
+    # iterate through the dataset, separate the key/val pairs
+    for char, num in dict_of_chars.items():
+        # create a new dict with `char` and `num` for each iteration
+        list_of_dicts.append({"char": char, "num": num})
+    
+    # show the highest number first (reverse true), and run through sort helper fn
+    list_of_dicts.sort(reverse=True, key=sort_on)
 
-    # use a helper function to provide a metric for the sort method to sort by number
-    nums = sort_on(dict_of_chars)
-    print(nums)
+    # print out the data in required format
+    # use i in range, we need each index
+    for i in range(0, len(list_of_dicts)):
+        char_dict = list_of_dicts[i] # save each dict to a var
+        print(f"{char_dict["char"]}: {char_dict["num"]}") # pull the data from each dict
 
+# test doesn't require a return value, only expects printed values from above :P
